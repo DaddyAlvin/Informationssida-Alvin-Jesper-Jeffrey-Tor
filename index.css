@@ -2,4 +2,47 @@
     border-style: groove;
     border-color: turquoise;
     border-width: 7px;
+    margin-right: auto;
+}
+
+.start_meny_1{
+    border-style: groove;
+    border-color: black;
+    border-width: 3px;
+    background-color: aqua;
+}
+
+.start_meny_2{
+    border-style: groove;
+    border-color: black;
+    border-width: 3px;
+    background-color: aqua;
+}
+
+.start_meny_3{
+    border-style: groove;
+    border-color: black;
+    border-width: 3px;
+    background-color: aqua;
+}
+
+.start_meny_4{
+    border-style: groove;
+    border-color: black;
+    border-width: 3px;
+    background-color: aqua;
+}
+
+.start_meny_5{
+    border-style: groove;
+    border-color: black;
+    border-width: 3px;
+    background-color: aqua;
+}
+
+.start_meny_6{
+    border-style: groove;
+    border-color: black;
+    border-width: 3px;
+    background-color: aqua;
 }
