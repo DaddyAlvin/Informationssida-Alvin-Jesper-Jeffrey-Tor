@@ -7,11 +7,13 @@ body {
 }
 
 .start_meny{
+    background-image: url('bilder/rolig.png');
     border-style: groove;
     border-color: turquoise;
     border-width: 7px;
+    max-width: fit-content;
+    margin-left: auto;
     margin-right: auto;
-    background-color: aquamarine;
 }
 
 .start_meny_1{
