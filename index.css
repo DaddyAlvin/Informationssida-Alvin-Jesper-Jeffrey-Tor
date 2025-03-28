@@ -1,11 +1,11 @@
 body {
-    background-image: url('/bilder/blommonsterbkg.png');
+    background-image: url('bilder/blommonsterbkg.png');
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat; 
     height: 100vh;
-  }
-  
+}
+
 .start_meny{
     border-style: groove;
     border-color: turquoise;
