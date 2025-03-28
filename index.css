@@ -1,8 +1,13 @@
 body {
-    background-image: url('/bilder/blommonsterbkg.png');
-  }
+    background-image: url('bilder/blommonsterbkg.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    height: 100vh;
+}
 
 .start_meny{
+    background-image: url('bilder/rol.png');
     border-style: groove;
     border-color: turquoise;
     border-width: 7px;
