@@ -1,59 +1,55 @@
+
 body {
-    background-image: url('bilder/blommonsterbkg.png');
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat; 
-    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.start_meny{
-    background-image: url('bilder/rolig.png');
-    border-style: groove;
-    border-color: turquoise;
-    border-width: 7px;
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+    padding: 15px;
 }
 
-.start_meny_1{
-    border-style: groove;
-    border-color: black;
-    border-width: 3px;
-    background-color: aqua;
+.menu-icon div {
+    background-color: #333;
+    height: 5px;
+    width: 100%;
+    transition: 0.3s;
 }
 
-.start_meny_2{
-    border-style: groove;
-    border-color: black;
-    border-width: 3px;
-    background-color: aqua;
+
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: white;
+    width: 220px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
-.start_meny_3{
-    border-style: groove;
-    border-color: black;
-    border-width: 3px;
-    background-color: aqua;
+.nav-menu a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #ddd;
 }
 
-.start_meny_4{
-    border-style: groove;
-    border-color: black;
-    border-width: 3px;
-    background-color: aqua;
+.nav-menu a:hover {
+    background: #ddd;
 }
 
-.start_meny_5{
-    border-style: groove;
-    border-color: black;
-    border-width: 3px;
-    background-color: aqua;
+
+.nav-menu.show {
+    display: block;
 }
 
-.start_meny_6{
-    border-style: groove;
-    border-color: black;
-    border-width: 3px;
-    background-color: aqua;
-}
