@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class='menu-icon' onclick='toggleMenu()'
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <header>
         <h1>Blomma blad 1 miljard</h1>
         <nav>
@@ -14,22 +19,22 @@
                 <li><a href="information.html">Information om blommor</li>
             </ul>
         </nav>
-    <section>
-        <div class="start_meny"><p>Vilken sida vill du gå till?</p>
-            <div class="start_meny_1"><a href="blomma.php"> Blomma 1</a></div>
-            
-            <div class="start_meny_2"><a href="blomma.php">Blomma 2 </a></div>
-
-            <div class="start_meny_3"><a href="blomma.php">Blomma 3</a></div>
-
-            <div class="start_meny_4"><a href="blomma.php">Blomma 4</a></div>
-
-            <div class="start_meny_5"><a href="blomma.php">Blomma 5</a></div>
-
-            <div class="start_meny_6"><a href="blomma.php">Blomma 6</a></div>
-        </div>
-    </section>
-
-    
+    <div class='menu-icon' onclick='toggleMenu()'
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <nav class='nav-menu'>
+        <a href="blomma.php"> Blomma 1</a>
+        <a href="blomma.php"> Blomma 2</a>
+        <a href="blomma.php"> Blomma 3</a>
+        <a href="blomma.php"> Blomma 4</a>
+        <a href="blomma.php"> Blomma 5</a>
+        <a href="blomma.php"> Blomma 6</a>
+    </nav>
+    <script>
+        function toggleMenu() {
+            document.queryselector('.nav-menu').classList.toggle('show)
+    </script>  
 </body>
 </html>
