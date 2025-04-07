@@ -7,11 +7,7 @@ body {
   /* perforerings storlek */
   --radius: 8px;
   background-image: url("bilder/vi.png");
-    radial-gradient(
-      var(--radius),
-      transparent 10%,
-      white
-    ),
+
     linear-gradient(white 0 0);
   background-repeat: 
     round, 
