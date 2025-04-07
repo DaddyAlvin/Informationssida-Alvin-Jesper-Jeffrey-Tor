@@ -1,12 +1,14 @@
-body {
-    background-image: url("/bilder/vi.png");
+body{
+    
 }
 
+
 .vårlåda {
-  border: thick double #32a1ce;
-  width: min(50%, 600px);
-  height: 50%;
-  position: fixed;
-  inset: 0;
-  margin: auto;
+    background-image: url("/bilder/vi.png");
+    border: thick double #32a1ce;
+    width: min(50%, 600px);
+    height: 50%;
+    position: fixed;
+    inset: 0;
+    margin: auto;
 }
