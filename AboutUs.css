@@ -4,7 +4,7 @@ body{
 
 
 .vårlåda {
-    background-image: url("/bilder/vi.png");
+    background-image: url("/bilder/katten.png");
     border: thick double #32a1ce;
     width: min(50%, 600px);
     height: 50%;
