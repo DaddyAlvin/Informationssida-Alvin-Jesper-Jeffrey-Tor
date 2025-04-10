@@ -6,8 +6,8 @@ body{
 .vårlåda {
     background-image: url("/bilder/katten.png");
     border: thick double #32a1ce;
-    width: min(50%, 600px);
-    height: 50%;
+    width: auto;
+    height: auto;
     position: fixed;
     inset: 0;
     margin: auto;
