@@ -4,26 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamburgarmeny</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="blom.css">
 </head>
 <body>
 
-   
-    <div class="menu-icon" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <p>test</p>
-    
-    <nav class="nav-menu">
-        <a href="blomma.php">Blomma 1</a>
-        <a href="blomma.php">Blomma 2</a>
-        <a href="blomma.php">Blomma 3</a>
-        <a href="blomma.php">Blomma 4</a>
-        <a href="blomma.php">Blomma 5</a>
-        <a href="blomma.php">Blomma 6</a>
-    </nav>
+    <header>
+        <div class="top-bar">
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav class="top-nav">
+                <a href="#">Hem</a>
+                <a href="#">Info</a>
+                <a href="#">Om oss</a>
+            </nav>
+        </div>
+        <nav class="nav-menu">
+            <a href="blomma.php">Blomma 1</a>
+            <a href="blomma.php">Blomma 2</a>
+            <a href="blomma.php">Blomma 3</a>
+            <a href="blomma.php">Blomma 4</a>
+            <a href="blomma.php">Blomma 5</a>
+            <a href="blomma.php">Blomma 6</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="row">
+            <div class="flex-box">
+                <p>Rosen är en symbol för kärlek och skönhet. Dess röda färg representerar passion, medan de mjuka kronbladen speglar ömhet och romantik.</p>
+            </div>
+            <div class="flex-box">
+                <p>Rosor finns i många färger – varje färg har sin betydelse. Vita rosor står för oskuld, rosa för tacksamhet, och gula rosor symboliserar vänskap. Det sista här är ett test för att se hur den reagarerar när 2 rader är olika såklart, bäst att vara säker walla frfr 100%</p>
+            </div>
+        </section>
+
+        <section class="poem">
+            <div class="flex-box wide">
+                <p>En ros så röd i morgonens sken,  doftar av drömmar, ömhet och sten.  Med taggar av sorg och blad av hopp,  växer den tyst och ger aldrig opp.</p>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="flex-box">
+                <p>Rosen har odlats i tusentals år och används ofta i både parfymer, ceremonier och som dekoration i trädgårdar världen över.</p>
+            </div>
+            <div class="flex-box">
+                <p><strong>Någon ful fucking bild</strong><p>
+            </div>
+        </section>
+    </main>
 
     <script>
         function toggleMenu() {
