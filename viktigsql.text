@@ -1,0 +1,44 @@
+-- Insert data into blomma
+INSERT INTO blomma (ID, blomma) VALUES (1, 'Ros'), (2, 'Lilja'), (3, 'Orkidée'),(4, 'Ogräs');
+
+-- Insert data into beskrivning
+INSERT INTO beskrivning (ID, beskrivning, blomma_id) VALUES (1, 'En vacker röd ros', 1),(2, 'En vacker gul påsklilja', 2),(3, 'En vacker blå orkidée', 3),(4, 'En äcklig maskros', 4);
+
+-- Insert data into bild
+INSERT INTO bild (ID, bild, blomma_id) VALUES (1, 'ros.jpg', 1),(2, 'lilja.jpg', 2),(3, 'orkidée.jpg', 3),(4, 'ogräs.jpg', 4);
+
+-- Insert data into dikt
+INSERT INTO dikt (ID, dikt, blomma_id) VALUES (1, 'Rosor är röda, violer är blå', 1), (2, 'Liljor är som ens älskade, pigga och vackra på våren, men nere och små på vintern.', 2), (3, 'Orkidéer är som en vild fjäril, galna och färgglada', 3), (4, 'Ogräs är som mig, utspridd och kaosartad men listig och strategisk.', 4);
+
+-- Insert data into farg
+INSERT INTO farg (ID, farg) VALUES (1, 'Röd'), (2, 'Gul'), (3, 'blå'), (4, 'rosa');
+
+-- Insert data into historia
+INSERT INTO historia (ID, historia, blomma_id) VALUES (1, 'Rosen har använts i århundraden som en symbol för kärlek.', 1),(2, 'Liljor symboliserar vår och påsk', 2), (3, 'Orkidéer symboliserar vackra blommor.', 3), (4, 'Ogräs har plågat mänskligheten i århundraden.', 4);
+
+-- Insert data into slaktrad
+INSERT INTO slaktrad (ID, typ) VALUES (1, 'rosväxter'), (2, 'liljor'), (3, 'orkidéer'), (4, 'ogräs');
+
+-- Insert data into sprak
+INSERT INTO sprak (ID, sprak) VALUES (1, 'Svenska'), (2, 'Engelska');
+
+-- Insert data into blomma_beskrivning
+INSERT INTO blomma_beskrivning (blomma_id, beskrivning_id) VALUES (1, 1),(2, 2),(3, 3),(4, 4);
+
+-- Insert data into blomma_bild
+INSERT INTO blomma_bild (blomma_id, bild_id) VALUES (1, 1),(2, 2),(3, 3),(4, 4);
+
+-- Insert data into blomma_dikt
+INSERT INTO blomma_dikt (blomma_id, dikt_id) VALUES (1, 1),(2, 2),(3, 3),(4, 4);
+
+-- Insert data into blomma_farg
+INSERT INTO blomma_farg (blomma_id, farg_id) VALUES (1, 1),(2, 2),(3, 3),(4, 4);
+
+-- Insert data into blomma_historia
+INSERT INTO blomma_historia (blomma_id, historia_id) VALUES (1, 1),(2, 2),(3, 3),(4, 4);
+
+-- Insert data into blomma_slaktrad
+INSERT INTO blomma_slaktrad (blomma_id, slaktrad_id) VALUES (1, 1),(2, 2),(3, 3),(4, 4);
+
+-- Insert data into blomma_sprak
+INSERT INTO blomma_sprak (blomma_id, sprak_id, oversatt_blomma) VALUES (1, 1, 'Ros'), (1, 2, 'Rose'), (2, 1, 'Lilja'), (2, 2, 'Lily'), (3, 1, 'Orkidée'), (3, 2, 'Orchid'), (4, 1, 'Ogräs'), (4, 2, 'Weed');
