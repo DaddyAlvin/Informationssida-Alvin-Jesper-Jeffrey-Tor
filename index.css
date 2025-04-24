@@ -14,7 +14,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 25px 40px;
-    background-color: #EFE4B0;
+    background-color: hsl(51, 100%, 50%);
     border-bottom: 4px solid #FFC90E;
 }
 
@@ -45,14 +45,13 @@ body {
     font-weight: bold;
     color: black;
     padding: 14px 30px;
-    background-color: #d7c675;
-    border: 4px solid #FFC90E;
+    background-color: #FFC90E;
     border-radius: 10px;
     transition: background-color 0.3s;
 }
 
 .top-nav a:hover {
-    background-color: #aea050;
+    background-color: #ffbb00;
 }
 
 .nav-menu {
