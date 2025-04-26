@@ -32,7 +32,10 @@ button:hover {
 
 .vårlåda {
     background-color: #EFE4B0;
-    border-bottom: 4px solid #FFC90E;
+    border: #FFC90E solid 4px;
+    border-radius: 10px;
+    width: fit-content;
+    block-size: fit-content;
 }
 
 .top-bar {
