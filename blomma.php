@@ -5,282 +5,110 @@ $username = "ntigskov_blomuser";
 $password = "*Rr-+=_H+NjZ";
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
-if (mysqli_connect_errno()) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 ?>
 
-<!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blommor - Meny</title>
     <link rel="stylesheet" href="index.css">
-
+</head>
+<body>
 <header>
-        <div class="top-bar">
-                <div class="menu-icon" onclick="toggleMenu('hamburgerMenu', 0)">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <ul id="hamburgerMenu" class="nav-menu">
-                    <?php
-                    $slaktradQuery = "SELECT * FROM slaktrad";
-                    $slaktradResult = mysqli_query($conn, $slaktradQuery);
-
-                    while ($slakt = mysqli_fetch_assoc($slaktradResult)) {
-                        $slaktID = $slakt['ID'];
-                        $slaktTyp = htmlspecialchars($slakt['typ']);
-                        echo "<li><a href='#' onclick=\"toggleMenu('slakt_$slaktID', 1)\">$slaktTyp</a>";
-                        echo "<ul id='slakt_$slaktID' class='submenu level-1'>";
-
-                        $fargQuery = "SELECT DISTINCT farg.ID, farg.farg FROM farg
-                                      JOIN blomma_farg ON farg.ID = blomma_farg.farg_id
-                                      JOIN blomma ON blomma.ID = blomma_farg.blomma_id
-                                      JOIN blomma_slaktrad ON blomma.ID = blomma_slaktrad.blomma_id
-                                      WHERE blomma_slaktrad.slaktrad_id = $slaktID";
-                        $fargResult = mysqli_query($conn, $fargQuery);
-
-                        while ($farg = mysqli_fetch_assoc($fargResult)) {
-                            $fargID = $farg['ID'];
-                            $fargNamn = htmlspecialchars($farg['farg']);
-                            echo "<li><a href='#' onclick=\"toggleMenu('farg_{$slaktID}_{$fargID}', 2)\">$fargNamn</a>";
-                            echo "<ul id='farg_{$slaktID}_{$fargID}' class='submenu level-2'>";
-
-                            $blommaQuery = "SELECT blomma.ID, blomma.blomma FROM blomma
-                                            JOIN blomma_farg ON blomma.ID = blomma_farg.blomma_id
-                                            JOIN blomma_slaktrad ON blomma.ID = blomma_slaktrad.blomma_id
-                                            WHERE blomma_farg.farg_id = $fargID AND blomma_slaktrad.slaktrad_id = $slaktID";
-                            $blommaResult = mysqli_query($conn, $blommaQuery);
-
-                            while ($blomma = mysqli_fetch_assoc($blommaResult)) {
-                                $blommaID = $blomma['ID'];
-                                $blommaNamn = htmlspecialchars($blomma['blomma']);
-                                echo "<li><a href='visa_blomma.php?blomma_id=$blommaID'>$blommaNamn</a></li>";
-                            }
-
-                            echo "</ul></li>";
-                        }
-
-                        echo "</ul></li>";
-                    }
-                    ?>
-                </ul>
-                <nav class="top-nav">
-                <a href="blomma.php">Hem</a>
-                <a href="AboutUs.php">Om oss</a>
-            </nav>
-            </div>
-            
+    <div class="top-bar">
+        <div class="menu-icon" onclick="toggleMenu('hamburgerMenu', 0)">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        
-    </header>
+        <ul id="hamburgerMenu" class="nav-menu">
+            <?php
+            $slaktradQuery = "SELECT * FROM slaktrad";
+            $slaktradResult = mysqli_query($conn, $slaktradQuery);
+            while ($slakt = mysqli_fetch_assoc($slaktradResult)) {
+                $slaktID = $slakt['ID'];
+                $slaktTyp = htmlspecialchars($slakt['typ']);
+                echo "<li><a href='#' onclick=\"toggleMenu('slakt_$slaktID', 1)\">$slaktTyp</a>";
+                echo "<ul id='slakt_$slaktID' class='submenu level-1'>";
+
+                $fargQuery = "SELECT farg.ID, farg.farg FROM farg
+                              JOIN blomma_farg ON farg.ID = blomma_farg.farg_id
+                              JOIN blomma ON blomma.ID = blomma_farg.blomma_id
+                              JOIN blomma_slaktrad ON blomma.ID = blomma_slaktrad.blomma_id
+                              WHERE blomma_slaktrad.slaktrad_id = $slaktID";
+                $fargResult = mysqli_query($conn, $fargQuery);
+
+                while ($farg = mysqli_fetch_assoc($fargResult)) {
+                    $fargID = $farg['ID'];
+                    $fargNamn = htmlspecialchars($farg['farg']);
+                    echo "<li><a href='#' onclick=\"toggleMenu('farg_{$slaktID}_{$fargID}', 2)\">$fargNamn</a>";
+                    echo "<ul id='farg_{$slaktID}_{$fargID}' class='submenu level-2'>";
+
+                    $blommaQuery = "SELECT blomma.ID, blomma.blomma FROM blomma
+                                    JOIN blomma_farg ON blomma.ID = blomma_farg.blomma_id
+                                    JOIN blomma_slaktrad ON blomma.ID = blomma_slaktrad.blomma_id
+                                    WHERE blomma_farg.farg_id = $fargID AND blomma_slaktrad.slaktrad_id = $slaktID";
+                    $blommaResult = mysqli_query($conn, $blommaQuery);
+
+                    while ($blomma = mysqli_fetch_assoc($blommaResult)) {
+                        $blommaID = $blomma['ID'];
+                        $blommaNamn = htmlspecialchars($blomma['blomma']);
+                        echo "<li><a href='visa_blomma.php?blomma_id=$blommaID'>$blommaNamn</a></li>";
+                    }
+                    echo "</ul></li>";
+                }
+                echo "</ul></li>";
+            }
+            if (mysqli_connect_errno()) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            ?>
+        </ul>
+
+        <nav class="top-nav">
+        <div class="language-switcher">
+    <form method="get" action="">
+        <select name="lang" onchange="this.form.submit()">
+            <option value="sv" <?php echo (isset($_GET['lang']) && $_GET['lang'] === 'sv') ? 'selected' : ''; ?>>Svenska</option>
+            <option value="en" <?php echo (isset($_GET['lang']) && $_GET['lang'] === 'en') ? 'selected' : ''; ?>>English</option>
+        </select>
+    </form>
+    </div>
+
+        <h2>Välkommen till vår sida om blommor!</h2>
+            <a href="index.php">Hem</a>
+            <a href="AboutUs.html">Om oss</a>
+        </nav>
+    </div>
+</header>
 
 <main>
-        <section class="row">
-            <div class="flex-box">
-                <p>Rosen är en symbol för kärlek och skönhet. Dess röda färg representerar passion, medan de mjuka kronbladen speglar ömhet och romantik.</p>
-            </div>
-            <div class="flex-box">
-                <p>Rosor finns i många färger – varje färg har sin betydelse. Vita rosor står för oskuld, rosa för tacksamhet, och gula rosor symboliserar vänskap. Det sista här är ett test för att se hur den reagarerar när 2 rader är olika såklart, bäst att vara säker walla frfr 100%</p>
-            </div>
-        </section>
+    <section class="row">
+        <div class="flex-box">
+            <p>Här kan du utforska olika blommor, deras färger och släktskap. Lär dig mer om deras betydelser och användningar genom tiderna.</p>
+        </div>
+        <div class="flex-box">
+            <p>För att navigera sidan, använd menyn högst upp till vänster. Klicka på en släkt för att se dess färger, och välj en färg för att utforska blommor i den kategorin. Klicka på en blomma för att få mer information om den.</p>
+        </div>
+    </section>
 
-        <section class="poem">
-            <div class="flex-box wide">
-                <p>En ros så röd i morgonens sken,  doftar av drömmar, ömhet och sten.  Med taggar av sorg och blad av hopp,  växer den tyst och ger aldrig opp.</p>
-            </div>
-        </section>
+    <section class="poem">
+        <div class="flex-box wide">
+            <p>Blommor som dansar i vindens famn,  sprider sin skönhet över land och hamn.  Med färger som glöder, dofter som ler,  naturens gåva som aldrig förser.</p>
+        </div>
+    </section>
 
-        <section class="row">
-            <div class="flex-box">
-                <p>Rosen har odlats i tusentals år och används ofta i både parfymer, ceremonier och som dekoration i trädgårdar världen över.</p>
-            </div>
-            <div class="flex-box">
-                <p><strong>Någon ful fucking bild</strong><p>
-            </div>
-        </section>
-    </main>
-
-<style>
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    background-image: url('bilder/blommonsterbkg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-    color: black;
-}
-
-a {
-    text-decoration: none;
-}
-
-button {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #444;
-}
-
-.top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 25px 40px;
-    background-color: #EFE4B0;
-    border-bottom: 4px solid #FFC90E;
-}
-
-.menu-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 55px;
-    height: 45px;
-    cursor: pointer;
-    padding: 12px;
-}
-
-.menu-icon div {
-    background-color: black;
-    height: 8px;
-    width: 100%;
-}
-
-.top-nav {
-    display: flex;
-    gap: 50px;
-}
-
-.top-nav a {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    padding: 14px 30px;
-    background-color: #d7c675;
-    border: 4px solid #FFC90E;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-}
-
-.top-nav a:hover {
-    background-color: #aea050;
-}
-
-.nav-menu {
-    display: none;
-    position: absolute;
-    top: 90px;
-    left: 20px;
-    background: #EFE4B0;
-    width: 220px;
-    border: 4px solid #FFC90E;
-    z-index: 1000;
-}
-
-.nav-menu a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: black;
-    border-bottom: 4px solid #FFC90E;
-}
-
-.nav-menu a:hover {
-    background-color: #FFC90E;
-}
-
-.nav-menu.show {
-    display: block;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    margin: 5px 0;
-}
-
-.submenu {
-    display: none;
-    margin-left: 20px;
-    background-color: #444;
-    border-radius: 4px;
-}
-
-.submenu.level-0 {
-    background-color: #333;
-}
-
-.submenu a {
-    color: white;
-    padding: 5px;
-    display: block;
-}
-
-.submenu a:hover {
-    background-color: #333;
-    color: black;
-    font-weight: bold;
-}
-
-main {
-    padding: 40px 30px;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.poem {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.flex-box {
-    background-color: #EFE4B0;
-    border: 4px solid #FFC90E;
-    padding: 15px;
-    flex: 1 1 300px;
-    box-sizing: border-box;
-    color: black;
-    display: flex;
-    align-items: center;
-}
-
-.flex-box p {
-    margin: 0;
-    white-space: pre-line;
-    word-wrap: break-word;
-    font-size: 16px;
-}
-
-.wide {
-    width: 90%;
-}
-</style>
+    <section class="row">
+        <div class="flex-box">
+            <p>Blommor har fascinerat människor i årtusenden och är en symbol för skönhet, kärlek och livets förgänglighet. De spelar en viktig roll i ekosystemet genom att locka pollinatörer som bin, fjärilar och fåglar. Blommor används också i konst, litteratur och kultur för att uttrycka känslor och berätta historier. Från rosor och liljor till exotiska orkidéer, varje blomma har sin egen unika betydelse och charm. De är inte bara dekorativa utan har också medicinska och kulinariska användningar, vilket gör dem till en ovärderlig del av vår värld.</p>
+        </div>
+        <div class="flex-box">
+            <img src="bilder/hemsidablommor.jpg" alt="Bild på en ros">
+        </div>
+    </section>
+</main>
+</body>
+</html>
 
 </head>
 <body>
@@ -301,3 +129,17 @@ function toggleMenu(id, level) {
 
 </body>
 </html>
+
+<?php
+$lang = isset($_GET['lang']) ? $_GET['lang'] : 'sv';
+
+if ($lang === 'en') {
+    echo "<script>
+        document.querySelector('h2').textContent = 'Welcome to our flower page!';
+        document.querySelector('.row .flex-box:nth-child(1) p').textContent = 'Here you can explore various flowers, their colors, and relationships. Learn more about their meanings and uses throughout history.';
+        document.querySelector('.row .flex-box:nth-child(2) p').textContent = 'To navigate the site, use the menu at the top left. Click on a family to see its colors, and select a color to explore flowers in that category. Click on a flower to get more information about it.';
+        document.querySelector('.poem .flex-box p').textContent = 'Flowers dancing in the wind\'s embrace, spreading their beauty across land and space. With colors that glow, scents that cheer, nature\'s gift that we hold dear.';
+        document.querySelector('.row .flex-box:nth-child(3) p').textContent = 'Flowers have fascinated people for millennia and are a symbol of beauty, love, and the transience of life. They play an important role in the ecosystem by attracting pollinators such as bees, butterflies, and birds. Flowers are also used in art, literature, and culture to express emotions and tell stories. From roses and lilies to exotic orchids, each flower has its own unique meaning and charm. They are not only decorative but also have medicinal and culinary uses, making them an invaluable part of our world.';
+    </script>";
+}
+?>
