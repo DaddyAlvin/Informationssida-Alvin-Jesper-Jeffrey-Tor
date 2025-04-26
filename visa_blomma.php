@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Visa blomma</title>
-    <link rel="stylesheet" href="visa_blomma.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <?php
@@ -14,10 +13,6 @@ $password = "*Rr-+=_H+NjZ";
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
-if (mysqli_connect_errno()) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
 if (isset($_GET['blomma_id'])) {
     $blomma_id = intval($_GET['blomma_id']);
 
@@ -26,33 +21,58 @@ if (isset($_GET['blomma_id'])) {
         blomma.blomma,
         farg.farg,
         slaktrad.typ AS slaktrad,
-        GROUP_CONCAT(DISTINCT blomma_sprak.oversatt_blomma SEPARATOR ', ') AS oversattningar
+        GROUP_CONCAT(DISTINCT blomma_sprak.oversatt_blomma SEPARATOR ', ') AS oversattningar,
+        dikt.dikt,
+        bild.bild,
+        beskrivning.beskrivning,
+        historia.historia
     FROM blomma
     LEFT JOIN blomma_farg ON blomma.ID = blomma_farg.blomma_id
     LEFT JOIN farg ON blomma_farg.farg_id = farg.ID
     LEFT JOIN blomma_slaktrad ON blomma.ID = blomma_slaktrad.blomma_id
     LEFT JOIN slaktrad ON blomma_slaktrad.slaktrad_id = slaktrad.ID
     LEFT JOIN blomma_sprak ON blomma.ID = blomma_sprak.blomma_id
+    LEFT JOIN dikt ON blomma.ID = dikt.blomma_id
+    LEFT JOIN bild ON blomma.ID = bild.blomma_id
+    LEFT JOIN beskrivning ON blomma.ID = beskrivning.blomma_id
+    LEFT JOIN historia ON blomma.ID = historia.blomma_id
     WHERE blomma.ID = $blomma_id
-    GROUP BY blomma.ID
-    ";
+";
 
-    $result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
     if ($row = mysqli_fetch_assoc($result)) {
+        echo "<div class='info-box'>";
         echo "<h1>" . htmlspecialchars($row['blomma']) . "</h1>";
-        echo "<p><strong>Färg:</strong> " . htmlspecialchars($row['farg']) . "</p>";
-        echo "<p><strong>Släktträd:</strong> " . htmlspecialchars($row['slaktrad']) . "</p>";
-        echo "<p><strong>Översättningar:</strong> " . htmlspecialchars($row['oversattningar']) . "</p>";
+        echo "<p>Färg: " . htmlspecialchars($row['farg']) . "</p>";
+        echo "<p>Släktträd: " . htmlspecialchars($row['slaktrad']) . "</p>";
+        echo "<p>Översättningar: " . htmlspecialchars($row['oversattningar']) . "</p>";
+
+        if (!empty($row['dikt'])) {
+            echo "<h3>Dikt</h3><p>" . nl2br(htmlspecialchars($row['dikt'])) . "</p>";
+        }
+        if (!empty($row['beskrivning'])) {
+            echo "<h3>Beskrivning</h3><p>" . nl2br(htmlspecialchars($row['beskrivning'])) . "</p>";
+        }
+        if (!empty($row['historia'])) {
+            echo "<h3>Historia</h3><p>" . nl2br(htmlspecialchars($row['historia'])) . "</p>";
+        }
+        if (!empty($row['bild'])) {
+            echo "<h3>Bild</h3><img src='" . htmlspecialchars($row['bild']) . "' alt='Bild på blomman' style='max-width:300px;'>";
+        }
+        echo "</div>";
     } else {
         echo "<p>Ingen data hittades.</p>";
     }
 } else {
     echo "<p>Ingen blomma vald.</p>";
 }
+if (mysqli_connect_errno()) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 ?>
-
-<a href="blomma.php" style="display:block; padding:10px; color:#333;">Tillbaka till grundfilen</a>
-
+<br>
+<button> <a href="index.php">Tillbaka till grundfilen</a> </button>
 </body>
 </html>
+
