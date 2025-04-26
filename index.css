@@ -30,6 +30,11 @@ button:hover {
     background-color: #EFE4B0;
 }
 
+.vårlåda {
+    background-color: #EFE4B0;
+    border-bottom: 4px solid #FFC90E;
+}
+
 .top-bar {
     display: flex;
     align-items: center;
