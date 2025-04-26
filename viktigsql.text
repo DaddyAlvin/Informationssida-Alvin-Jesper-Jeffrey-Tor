@@ -42,3 +42,64 @@ INSERT INTO blomma_slaktrad (blomma_id, slaktrad_id) VALUES (1, 1),(2, 2),(3, 3)
 
 -- Insert data into blomma_sprak
 INSERT INTO blomma_sprak (blomma_id, sprak_id, oversatt_blomma) VALUES (1, 1, 'Ros'), (1, 2, 'Rose'), (2, 1, 'Lilja'), (2, 2, 'Lily'), (3, 1, 'Orkidée'), (3, 2, 'Orchid'), (4, 1, 'Ogräs'), (4, 2, 'Weed');
+
+
+MALL:
+-- === BYT UT DESSA ===
+-- Sätt ID, namn, färg-ID och släktträd-ID för din nya blomma
+SET @blomma_id = 9;
+SET @blomma_namn = 'Orange Orkidée';
+SET @beskrivning = 'En lysande orange orkidée som fångar blickar.';
+SET @bildnamn = 'orangeorkidee.jpg';
+SET @dikt = 'Orange orkidéer glöder likt solnedgångar i hjärtat.';
+SET @historia = 'Den orange orkidén är en symbol för stolthet och kreativitet.';
+SET @farg_id = 7; -- Orange (måste finnas i farg-tabellen!)
+SET @slaktrad_id = 3; -- Orkidéer
+-- Översättningar
+SET @oversatt_svenska = 'Orange Orkidée';
+SET @oversatt_engelska = 'Orange Orchid';
+
+-- === INGEN ÄNDRING BEHÖVS HÄR ===
+-- Lägg till blomma
+INSERT INTO blomma (ID, blomma) VALUES (@blomma_id, @blomma_namn);
+
+-- Lägg till beskrivning
+INSERT INTO beskrivning (ID, beskrivning, blomma_id) VALUES 
+(@blomma_id, @beskrivning, @blomma_id);
+
+-- Lägg till bild
+INSERT INTO bild (ID, bild, blomma_id) VALUES 
+(@blomma_id, @bildnamn, @blomma_id);
+
+-- Lägg till dikt
+INSERT INTO dikt (ID, dikt, blomma_id) VALUES 
+(@blomma_id, @dikt, @blomma_id);
+
+-- Lägg till historia
+INSERT INTO historia (ID, historia, blomma_id) VALUES 
+(@blomma_id, @historia, @blomma_id);
+
+-- Kopplingstabeller
+INSERT INTO blomma_beskrivning (blomma_id, beskrivning_id) VALUES 
+(@blomma_id, @blomma_id);
+
+INSERT INTO blomma_bild (blomma_id, bild_id) VALUES 
+(@blomma_id, @blomma_id);
+
+INSERT INTO blomma_dikt (blomma_id, dikt_id) VALUES 
+(@blomma_id, @blomma_id);
+
+INSERT INTO blomma_farg (blomma_id, farg_id) VALUES 
+(@blomma_id, @farg_id);
+
+INSERT INTO blomma_historia (blomma_id, historia_id) VALUES 
+(@blomma_id, @blomma_id);
+
+INSERT INTO blomma_slaktrad (blomma_id, slaktrad_id) VALUES 
+(@blomma_id, @slaktrad_id);
+
+-- Lägg till översättningar
+INSERT INTO blomma_sprak (blomma_id, sprak_id, oversatt_blomma) VALUES 
+(@blomma_id, 1, @oversatt_svenska),
+(@blomma_id, 2, @oversatt_engelska);
+
