@@ -1,12 +1,33 @@
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
     background-image: url('bilder/blommonsterbkg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    margin: 0;
+    padding: 0;
     color: black;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    background-color: #e7d889;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border: #FFC90E solid 4px;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #EFE4B0;
 }
 
 .top-bar {
@@ -14,20 +35,8 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 25px 40px;
-    background-color: hsl(51, 100%, 50%);
+    background-color: #EFE4B0;
     border-bottom: 4px solid #FFC90E;
-}
-
-.vårlåda {
-    background-image: url("/bilder/katten.png");
-    border: thick double #32a1ce;
-    position: absolute;
-    top: 50%;
-    left: 30%;
-    margin-top: -30px;
-    margin-left: -30px;
-    width: auto;
-    height: auto;
 }
 
 .menu-icon {
@@ -52,18 +61,22 @@ body {
 }
 
 .top-nav a {
-    text-decoration: none;
     font-size: 24px;
     font-weight: bold;
-    color: black;
+    color: #000000;
     padding: 14px 30px;
-    background-color: #FFC90E;
+    background-color: #d7c675;
+    border: 4px solid #FFC90E;
     border-radius: 10px;
     transition: background-color 0.3s;
 }
 
+.top-nav h2 {
+    text-align: center;
+}
+
 .top-nav a:hover {
-    background-color: #ffbb00;
+    background-color: #aea050;
 }
 
 .nav-menu {
@@ -81,16 +94,46 @@ body {
     display: block;
     padding: 15px;
     text-decoration: none;
-    color: black;
-    border-bottom: 4px solid #FFC90E;
+    color: #000000;
+    border-bottom: none;
 }
 
 .nav-menu a:hover {
-    background-color: #FFC90E;
+    background-color: #dbcc82;
 }
 
 .nav-menu.show {
     display: block;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+.submenu {
+    display: none;
+    margin-left: 20px;
+    background-color: #aea050;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.submenu a {
+    color: white;
+    padding: 5px;
+    display: block;
+}
+
+.submenu a:hover {
+    background-color: #aea050;
+    color: black;
+    font-weight: bold;
 }
 
 main {
@@ -120,6 +163,8 @@ main {
     color: black;
     display: flex;
     align-items: center;
+    max-width: fit-content;
+    margin: 0 auto;
 }
 
 .flex-box p {
@@ -131,4 +176,80 @@ main {
 
 .wide {
     width: 90%;
+}
+
+.flex-box img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.info-box {
+    background-color: #EFE4B0;
+    border: 4px solid #FFC90E;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .top-nav {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .top-nav a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .flex-box {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+    }
+
+    .menu-icon {
+        width: 45px;
+        height: 35px;
+    }
+
+    .menu-icon div {
+        height: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar {
+        padding: 10px 15px;
+    }
+
+    .top-nav a {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 5px 8px;
+    }
+
+    .nav-menu {
+        width: 180px;
+    }
 }
