@@ -36,6 +36,10 @@ button:hover {
     border-radius: 10px;
     width: fit-content;
     block-size: fit-content;
+    text-align: center;
+    margin: 0 auto; 
+    position: relative; 
+    transform: translateY(50%); 
 }
 
 .top-bar {
@@ -45,6 +49,7 @@ button:hover {
     padding: 25px 40px;
     background-color: #EFE4B0;
     border-bottom: 4px solid #FFC90E;
+    margin-bottom: 20px;
 }
 
 .menu-icon {
@@ -77,6 +82,10 @@ button:hover {
     border: 4px solid #FFC90E;
     border-radius: 10px;
     transition: background-color 0.3s;
+    text-align: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
 }
 
 .top-nav h2 {
@@ -246,6 +255,7 @@ main {
     .top-bar {
         padding: 10px 15px;
     }
+    }
 
     .top-nav a {
         font-size: 20px;
@@ -260,4 +270,57 @@ main {
     .nav-menu {
         width: 180px;
     }
-}
+
+    .language-switcher {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #EFE4B0;
+        border: 4px solid #FFC90E;
+        border-radius: 10px;
+        padding: 10px 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .language-switcher select {
+        font-size: 18px;
+        padding: 5px 10px;
+        border: 2px solid #FFC90E;
+        border-radius: 5px;
+        background-color: #f4f4f9;
+        color: black;
+        cursor: pointer;
+        appearance: none;
+        background-position: right 10px center;
+        background-size: 10px;
+    }
+
+    .language-switcher select:hover {
+        background-color: #dbcc82;
+    }
+
+    .language-switcher option {
+        background-color: #f4f4f9;
+        color: black;
+    }
+
+    .welcome-message {
+        background-color: #EFE4B0;
+        border: 2px solid #FFC90E;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px auto;
+        max-width: 400px;
+        text-align: center;
+        font-family: 'Cursive', Arial, sans-serif;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        transform: translateY(0);
+    }
+
+    .welcome-message h2 {
+        color: #0e7a1d;
+        font-size: 20px;
+        text-shadow: 1px 1px #FFC90E;
+    }
