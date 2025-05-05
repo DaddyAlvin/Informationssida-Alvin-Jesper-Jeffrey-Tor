@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, Times, "Times New Roman";
     background-color: #f4f4f9;
     background-image: url('bilder/blommonsterbkg.png');
     background-size: cover;
@@ -31,15 +31,11 @@ button:hover {
 }
 
 .vårlåda {
-    background-color: #EFE4B0;
-    border: #FFC90E solid 4px;
-    border-radius: 10px;
     width: fit-content;
     block-size: fit-content;
     text-align: center;
     margin: 0 auto; 
     position: relative; 
-    transform: translateY(50%); 
 }
 
 .top-bar {
@@ -47,7 +43,7 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     padding: 25px 40px;
-    background-color: #EFE4B0;
+    background-color: hsl(51, 100%, 50%);
     border-bottom: 4px solid #FFC90E;
     margin-bottom: 20px;
 }
@@ -78,7 +74,7 @@ button:hover {
     font-weight: bold;
     color: #000000;
     padding: 14px 30px;
-    background-color: #d7c675;
+    background-color: #FFC90E;
     border: 4px solid #FFC90E;
     border-radius: 10px;
     transition: background-color 0.3s;
@@ -93,7 +89,7 @@ button:hover {
 }
 
 .top-nav a:hover {
-    background-color: #aea050;
+    background-color: #ffbb00;
 }
 
 .nav-menu {
@@ -101,7 +97,7 @@ button:hover {
     position: absolute;
     top: 90px;
     left: 20px;
-    background: #EFE4B0;
+    background: hsl(51, 100%, 50%);
     width: 220px;
     border: 4px solid #FFC90E;
     z-index: 1000;
@@ -116,7 +112,7 @@ button:hover {
 }
 
 .nav-menu a:hover {
-    background-color: #dbcc82;
+    background-color: #ffbb00;
 }
 
 .nav-menu.show {
@@ -179,9 +175,6 @@ main {
     box-sizing: border-box;
     color: black;
     display: flex;
-    align-items: center;
-    max-width: fit-content;
-    margin: 0 auto;
 }
 
 .flex-box p {
@@ -316,7 +309,6 @@ main {
         font-family: 'Cursive', Arial, sans-serif;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         position: relative;
-        transform: translateY(0);
     }
 
     .welcome-message h2 {
