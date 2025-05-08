@@ -132,7 +132,7 @@ li {
 .submenu {
     display: none;
     margin-left: 20px;
-    background-color: #aea050;
+    background-color: #ffbb00;
     border-radius: 4px;
     padding: 5px;
 }
@@ -144,7 +144,7 @@ li {
 }
 
 .submenu a:hover {
-    background-color: #aea050;
+    background-color: #ff9d00;
     color: black;
     font-weight: bold;
 }
