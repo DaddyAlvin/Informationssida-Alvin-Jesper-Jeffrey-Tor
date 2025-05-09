@@ -39,7 +39,6 @@ $poem = getTranslation($conn, $lang, "poem");
 $fascination = getTranslation($conn, $lang, "fascination");
 
 ?>
-
 <body>
 <nav>
 <header>
@@ -116,6 +115,10 @@ $fascination = getTranslation($conn, $lang, "fascination");
         </h2>
             </div>
 
+<div class="toggle-knappholder" onclick="toggleDarkMode()">
+<div class="toggle-knapp"></div>
+    
+
 <form method="get" action="" class="language-switcher">
             <select name="lang" onchange="this.form.submit()">
             <option value="sv" <?php echo ($lang === 'sv') ? 'selected' : ''; ?>>🌸 Svenska</option>
@@ -167,6 +170,15 @@ function toggleMenu(id, level) {
         current.style.display = (current.style.display === "block") ? "none" : "block";
     }
 }
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const enabled = document.body.classList.contains('dark-mode');
+      localStorage.setItem('dark-mode', enabled ? 'enabled' : 'disabled');
+    }
+
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+    }
 </script>
 </body>
 </html>
