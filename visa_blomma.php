@@ -99,6 +99,9 @@ function getTranslation($conn, $lang, $key_name) {
     ?>
 </ul>
 
+<div class="toggle-knappholder" onclick="toggleDarkMode()">
+<div class="toggle-knapp"></div>
+
 <form method="get" action="" class="language-switcher">
     <input type="hidden" name="blomma_id" value="<?php echo isset($_GET['blomma_id']) ? intval($_GET['blomma_id']) : ''; ?>">
     <select name="lang" onchange="this.form.submit()">
@@ -160,12 +163,10 @@ if (isset($_GET['blomma_id'])) {
     } else {
         echo "<p>" . (($lang === 'en') ? 'No data found for the selected flower.' : 'Ingen data hittades för vald blomma.') . "</p>";
     }
-
     mysqli_stmt_close($stmt);
 } else {
     echo "<p>" . (($lang === 'en') ? 'No flower selected.' : 'Ingen blomma vald.') . "</p>";
 }
-
 mysqli_close($conn);
 ?>
 </main>
@@ -184,4 +185,13 @@ function toggleMenu(id, level) {
         current.style.display = (current.style.display === "block") ? "none" : "block";
     }
 }
+function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const enabled = document.body.classList.contains('dark-mode');
+      localStorage.setItem('dark-mode', enabled ? 'enabled' : 'disabled');
+    }
+
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+    }
 </script>
