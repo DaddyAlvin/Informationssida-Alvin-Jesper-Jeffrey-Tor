@@ -41,7 +41,6 @@ $buttonReddit = getTranslation($conn, $lang, "buttons.reddit");
 $buttonInstagram = getTranslation($conn, $lang, "buttons.instagram");
 
 ?>
-
 <body>
 <nav>
 <header>
@@ -106,9 +105,8 @@ $buttonInstagram = getTranslation($conn, $lang, "buttons.instagram");
         echo "<li>Inga släktträd hittades.</li>";
     }
     ?>
-</ul>
-    
-      
+</ul>    
+<div class="welcome-message">
     <div class="vårlåda">
         <h1><?php echo $aboutUsTitle; ?></h1>
         <p><?php echo $aboutUsDescription1; ?></p> 
@@ -117,7 +115,10 @@ $buttonInstagram = getTranslation($conn, $lang, "buttons.instagram");
         <button><?php echo $buttonReddit; ?></button>
         <button><?php echo $buttonInstagram; ?></button>
     </div>
+</div>
 
+<div class="toggle-knappholder" onclick="toggleDarkMode()">
+<div class="toggle-knapp"></div>
 
 <form method="get" action="" class="language-switcher">
             <select name="lang" onchange="this.form.submit()">
@@ -146,6 +147,15 @@ function toggleMenu(id, level) {
         current.style.display = (current.style.display === "block") ? "none" : "block";
     }
 }
+function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const enabled = document.body.classList.contains('dark-mode');
+      localStorage.setItem('dark-mode', enabled ? 'enabled' : 'disabled');
+    }
+
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+    }
 </script>
 
 
